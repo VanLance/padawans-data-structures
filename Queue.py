@@ -17,12 +17,14 @@ class Queue:
         
         if not self.tail:
             self.tail = node
-            self.head.right = node
+            self.head.right = self.tail
+            self.tail.left = self.head
             return
         
         old_tail = self.tail
         self.tail = node
-        old_tail.right = node
+        old_tail.right = self.tail
+        self.tail.left = old_tail
 
     
     def deque(self):
@@ -48,13 +50,13 @@ queue.enqueue(2)
 queue.enqueue(4)
 queue.enqueue(5)
 
-print(queue.head.right.right, '\n')
+print(queue.head.right.right.right.left, '\n')
 
-print(queue.deque())
-print(queue.deque())
+# print(queue.deque())
+# print(queue.deque())
 
-print(queue.peek(), ' Peeking')
+# print(queue.peek(), ' Peeking')
 
-print(queue.deque())
-print(queue.deque())
+# print(queue.deque())
+# print(queue.deque())
 
